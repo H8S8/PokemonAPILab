@@ -1,10 +1,15 @@
 import Pokemon from "./Pokemon";
 
-const PokemonList = () => {
+const PokemonList = ({ pokemonList }) => {
+
+    const mappedPokemon = pokemonList.map((pokemon, index) => {
+        return <Pokemon pokemon={pokemon} key={index} />
+    })
+
     return (
         <>
-        <p> PokemonList Component </p>
-        <Pokemon />
+            <p> PokemonList Component </p>
+            {mappedPokemon}
         </>
     );
 }

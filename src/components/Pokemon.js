@@ -1,7 +1,7 @@
-const Pokemon = () => {
+const Pokemon = ({pokemon}) => {
     return (
         <>
-        <p>Pokemon Component</p>
+            <p>{pokemon.name}</p>
         </>
     );
 }
