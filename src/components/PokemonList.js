@@ -9,7 +9,9 @@ const PokemonList = ({ pokemonList }) => {
     return (
         <>
             <p> PokemonList Component </p>
-            {mappedPokemon}
+            <div className="pokemon-list">
+                {mappedPokemon}
+            </div>
         </>
     );
 }

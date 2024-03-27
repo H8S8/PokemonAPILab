@@ -21,6 +21,9 @@ const PokemonContainer = () => {
         });
         Promise.all(mappedJsonData)
         .then((results)=>{
+            results.forEach((pokemon) => {
+                pokemon.seen = false;
+            })
             console.log(results)
             setPokemons(results);
         })
