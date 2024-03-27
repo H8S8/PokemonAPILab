@@ -3,12 +3,26 @@ import PokemonList from "../components/PokemonList";
 
 const PokemonContainer = () => {
 
-    const [pokemon, setPokemon] = useState([]);
+    const [pokemons, setPokemons] = useState([]);
+
+    const fetchData = async (url) => {
+        const response = await fetch(url);
+        const jsonData = await response.json();
+        // console.log(jsonData);
+        return jsonData;
+    }
     
     const loadData = async () => {
-        const response = await fetch("https://pokeapi.co/api/v2/pokemon/");
-        const jsonData = await response.json();
-        setPokemon(jsonData.results);
+        const jsonData = await fetchData("https://pokeapi.co/api/v2/pokemon/");
+        console.log(jsonData);
+
+        const mappedJsonData = await jsonData.results.map((pokemon) => {
+            const pokemonData = fetchData(pokemon.url);
+            return pokemonData;
+        });
+        console.log(mappedJsonData);
+
+        setPokemons(mappedJsonData);
     }
 
     useEffect(() => {
@@ -19,7 +33,7 @@ const PokemonContainer = () => {
         // https://pokeapi.co/api/v2/pokemon/
         <>
             <p> Pokemon Container </p>
-            <PokemonList pokemonList = {pokemon}/>
+            <PokemonList pokemonList = {pokemons}/>
         </>
     );
 }
