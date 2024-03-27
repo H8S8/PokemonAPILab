@@ -1,9 +1,9 @@
 import Pokemon from "./Pokemon";
 
-const PokemonList = ({ pokemonList }) => {
+const PokemonList = ({ pokemonList, markPokemonSeen }) => {
 
     const mappedPokemon = pokemonList.map((pokemon, index) => {
-        return <Pokemon pokemon={pokemon} key={index} />
+        return <Pokemon pokemon={pokemon} key={index} markPokemonSeen={markPokemonSeen}/>
     })
 
     return (

@@ -11,7 +11,7 @@ const PokemonContainer = () => {
     }
     
     const loadData = async () => {
-        const jsonData = await fetchData("https://pokeapi.co/api/v2/pokemon?limit=5");
+        const jsonData = await fetchData("https://pokeapi.co/api/v2/pokemon?limit=30");
 
         const completeJsonData = [];
 
@@ -33,11 +33,23 @@ const PokemonContainer = () => {
         loadData();
     }, [])
 
+    const markPokemonSeen = (seenPokemon) => {
+        const pokemonClone = [...pokemons];
+        console.log("seen");
+        pokemonClone.forEach((pokemon) => {
+            if(pokemon.id === seenPokemon.id){
+                pokemon.seen = true;
+            }
+        })
+        setPokemons(pokemonClone);
+        console.log(pokemons);
+    }
+
     return (
         // https://pokeapi.co/api/v2/pokemon/
         <>
             <p> Pokemon Container </p>
-            <PokemonList pokemonList = {pokemons}/>
+            <PokemonList pokemonList = {pokemons} markPokemonSeen={markPokemonSeen}/>
         </>
     );
 }
