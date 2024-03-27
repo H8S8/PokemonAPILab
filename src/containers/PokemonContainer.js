@@ -7,22 +7,23 @@ const PokemonContainer = () => {
 
     const fetchData = async (url) => {
         const response = await fetch(url);
-        const jsonData = await response.json();
-        // console.log(jsonData);
-        return jsonData;
+        return response.json();
     }
     
     const loadData = async () => {
-        const jsonData = await fetchData("https://pokeapi.co/api/v2/pokemon/");
-        console.log(jsonData);
+        const jsonData = await fetchData("https://pokeapi.co/api/v2/pokemon?limit=5");
 
-        const mappedJsonData = await jsonData.results.map((pokemon) => {
+        const completeJsonData = [];
+
+        const mappedJsonData = jsonData.results.map((pokemon) => {
             const pokemonData = fetchData(pokemon.url);
             return pokemonData;
         });
-        console.log(mappedJsonData);
-
-        setPokemons(mappedJsonData);
+        Promise.all(mappedJsonData)
+        .then((results)=>{
+            console.log(results)
+            setPokemons(results);
+        })
     }
 
     useEffect(() => {
