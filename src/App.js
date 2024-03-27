@@ -4,7 +4,7 @@ import PokemonContainer from './containers/PokemonContainer';
 function App() {
   return (
     <>
-      <h1> Pokemon </h1>
+      <h1> Pokedex </h1>
       <PokemonContainer />
     </>
   );

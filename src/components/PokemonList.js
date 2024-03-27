@@ -8,7 +8,6 @@ const PokemonList = ({ pokemonList, markPokemonSeen }) => {
 
     return (
         <>
-            <p> PokemonList Component </p>
             <div className="pokemon-list">
                 {mappedPokemon}
             </div>

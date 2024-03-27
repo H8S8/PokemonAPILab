@@ -48,7 +48,6 @@ const PokemonContainer = () => {
     return (
         // https://pokeapi.co/api/v2/pokemon/
         <>
-            <p> Pokemon Container </p>
             <PokemonList pokemonList = {pokemons} markPokemonSeen={markPokemonSeen}/>
         </>
     );
